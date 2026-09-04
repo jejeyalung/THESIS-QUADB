@@ -10,3 +10,7 @@ Stage 1 is sentiment classification and stage 2 is dissatisfaction classificatio
 
 We'll be using kaggle for training cause Im not sacrificing my pc to thesis
 
+so far sa src, our preprocess script cleans the text by lowercasing everything, reduce or remove repeated characters kasi bobo mga pilipino, may list of formal tagalog words na chinecheck, bale 'sya' to 'siya' and more, and drop pag blanko ung textbox ng review'
+
+iniisip pa kung iimplement ung spam or irrelevant reviews or yung mga review na may number or emojis pagiisipan pa ig.
+
