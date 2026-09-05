@@ -14,3 +14,5 @@ so far sa src, our preprocess script cleans the text by lowercasing everything, 
 
 iniisip pa kung iimplement ung spam or irrelevant reviews or yung mga review na may number or emojis pagiisipan pa ig.
 
+updatae 9/5/2026
+Stage 1 training complete, basically recreated yung shit nina ccosme, notebook for training pushed in /notebooks, models gitignored muna kasi too big ung file, maybe send q nlng through gdrive
