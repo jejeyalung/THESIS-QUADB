@@ -1,8 +1,9 @@
 """
-Taglish Review Analyzer - CLI tool
+SentiTaglish+ - CLI tool
 
-Takes a CSV of raw customer reviews (just needs a 'review' column, no labels)
-and produces sentiment + dissatisfaction-category predictions for each one.
+An enhanced program building on ccosme's SentiTaglish sentiment work - takes
+a CSV of raw customer reviews (just needs a 'review' column, no labels) and
+produces sentiment + dissatisfaction-category predictions for each one.
 
 Pipeline:
   1. Clean text (same preprocessing used during training - see preprocess.py)
@@ -12,12 +13,21 @@ Pipeline:
   4. Writes an output CSV with all predictions, plus a console summary
 
 Usage:
-    python3 cli_analyze.py --input reviews.csv --output results.csv
+    python3 sentitaglishplus.py --input reviews.csv --output results.csv
 
 Requires trained models to already exist locally:
     models/stage1_sentiment/     (config.json, model.safetensors, tokenizer files)
     models/stage2_dissatisfaction/  (same structure)
 Download these from Kaggle after training - see notebooks/ for how they were made.
+"""
+
+BANNER = r"""
+ ____             _   _ _____           _ _     _           
+/ ___|  ___ _ __ | |_(_)_   _|_ _  __ _| (_)___| |__    _   
+\___ \ / _ \ '_ \| __| | | |/ _` |/ _` | | / __| '_ \ _| |_ 
+ ___) |  __/ | | | |_| | | | (_| | (_| | | \__ \ | | |_   _|
+|____/ \___|_| |_|\__|_| |_|\__,_|\__, |_|_|___/_| |_| |_|  
+                                  |___/                     
 """
 
 import argparse
@@ -136,6 +146,7 @@ def print_summary(df: pd.DataFrame):
 
 
 def main():
+    print(BANNER)
     parser = argparse.ArgumentParser(description="Analyze Taglish product reviews for sentiment and dissatisfaction reasons.")
     parser.add_argument("--input", required=True, help="Path to input CSV with a 'review' column")
     parser.add_argument("--output", required=True, help="Path to write the output CSV")
