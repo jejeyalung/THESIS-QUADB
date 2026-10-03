@@ -1,0 +1,18 @@
+{
+  "_comment": "Per-category decision thresholds for Stage 2 (sigmoid output >= threshold counts as that category applying). Chosen from the threshold sweep on the 10-epoch training run - see notebooks/stage2_dissatisfaction_training.ipynb, cell 8 output. If you retrain Stage 2 (new epochs, pos_weight, more data), re-run the threshold sweep and update these numbers - nothing else in the CLI tool needs to change.",
+
+  "def": 0.4,
+  "dam": 0.5,
+  "perf": 0.3,
+  "pmq": 0.4,
+  "lst": 0.4,
+  "var": 0.5,
+  "mi": 0.4,
+  "auth": 0.1,
+  "pss": 0.5,
+  "del": 0.2,
+  "pack": 0.5,
+  "val": 0.4,
+
+  "_auth_warning": "auth (Counterfeit/Authenticity) achieves only F1=0.129 even at its best threshold, due to just 61 positive training examples (1.8% of data). Predictions for this category are unreliable - see LOW_CONFIDENCE_CATEGORIES in the CLI tool."
+}
