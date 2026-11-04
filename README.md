@@ -91,7 +91,7 @@ Notes:
 ## Usage
 
 ```bash
-python3 src/sentitaglishplus.py --input review.csv --output results.csv
+python3 src/sentitaglishplus.py --input reviews.csv --output results.csv
 ```
 
 | Flag | Required | Description |
