@@ -44,8 +44,8 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from preprocess import clean_text
 
-STAGE1_MODEL_DIR = "models/stage1_sentiment"
-STAGE2_MODEL_DIR = "models/stage2_dissatisfaction"
+STAGE1_MODEL_DIR = "models/stage1_xlm-roberta-base_final"
+STAGE2_MODEL_DIR = "models/stage2_xlm-roberta-base_final"
 THRESHOLDS_PATH = "config/stage2_thresholds.json"
 
 STAGE1_LABELS = ["negative", "neutral", "positive", "mixed"]
@@ -168,7 +168,7 @@ def main():
     if before != len(df):
         print(f"Dropped {before - len(df)} rows that were empty after cleaning")
 
-    thresholds = load_thresholds(THRESHOLDS_PATH)
+    thresholds = {cat: 0.5 for cat in CATEGORY_COLUMNS}   # same as the Stage 2 notebooks
 
     print("\nLoading Stage 1 (sentiment) model...")
     tok1, model1 = load_model(STAGE1_MODEL_DIR, device)
@@ -179,7 +179,7 @@ def main():
     tok2, model2 = load_model(STAGE2_MODEL_DIR, device)
 
     for cat in CATEGORY_COLUMNS:
-        df[cat] = ""
+        df[cat] = pd.Series(pd.NA, index=df.index, dtype="Int64")
 
     negative_mask = df["predicted_sentiment"] == "negative"
     negative_indices = df[negative_mask].index.tolist()
